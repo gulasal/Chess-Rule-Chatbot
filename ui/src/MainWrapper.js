@@ -4,7 +4,15 @@ import ChatbotWrapper from "./ChatbotWrapper";
 
 function MainWrapper() {
   return (
-    <div>
+    <div
+      style={{
+        backgroundColor: "#EDF5FF",
+        width: "100vw",
+        height: "100vh",
+        padding: "1rem",
+        margin: "0",
+      }}
+    >
       <Title />
       <ChatbotWrapper />
     </div>
