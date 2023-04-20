@@ -6,7 +6,7 @@ function Title() {
     <Container
       css={{
         width: "60rem",
-        height: "15rem",
+        height: "14rem",
         backgroundColor: "#00254D",
         borderRadius: "10px",
         opacity: 0.8,
@@ -15,7 +15,7 @@ function Title() {
     >
       <Row justify="center">
         <Text
-          h2
+          h6
           size={60}
           css={{
             color: "white",
