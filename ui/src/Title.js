@@ -4,6 +4,7 @@ import { Container, Col, Row, Text } from "@nextui-org/react";
 function Title() {
   return (
     <Container
+      fluid
       css={{
         width: "60rem",
         height: "14rem",
@@ -11,6 +12,7 @@ function Title() {
         borderRadius: "10px",
         opacity: 0.8,
         fontFamily: "'Space Grotesk', sans-serif",
+        "@md": {},
       }}
     >
       <Row justify="center">
@@ -37,35 +39,27 @@ function Title() {
           </Text>
         </Col>
       </Row>
-      <Row>
-        <Col
-          css={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-          }}
-        >
-          <Row>
-            <Text color="#C3F4FD" size="$xs">
-              Gulasal Kuchkarova
-            </Text>
-          </Row>
-          <Row>
-            <Text color="#C3F4FD" size="$xs">
-              Michael Mutote
-            </Text>
-          </Row>
-          <Row>
-            <Text color="#C3F4FD" size="$xs">
-              Ibrahim Hassib Mwazewe
-            </Text>
-          </Row>
-          <Row>
-            <Text color="#C3F4FD" size="$xs">
-              Arnold Gueguim Zangue
-            </Text>
-          </Row>
-        </Col>
+      <Row
+        justify="center"
+        css={{
+          display: "flex",
+          flexDirection: "column",
+
+          alignItems: "center",
+        }}
+      >
+        <Text color="#C3F4FD" size="$xs">
+          Gulasal Kuchkarova
+        </Text>
+        <Text color="#C3F4FD" size="$xs">
+          Michael Mutote
+        </Text>
+        <Text color="#C3F4FD" size="$xs">
+          Ibrahim Hassib Mwazewe
+        </Text>
+        <Text color="#C3F4FD" size="$xs">
+          Arnold Gueguim Zangue
+        </Text>
       </Row>
     </Container>
   );
