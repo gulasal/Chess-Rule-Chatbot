@@ -14,23 +14,21 @@ const chatbotHeaderStyle = {
   },
 };
 
+const textStyle = {
+  fontFamily: "'Space Grotesk', sans-serif",
+  marginLeft: "3rem",
+  position: "absolute",
+  top: "50%",
+  msTransform: "translateY(-50%)",
+  transform: "translateY(-50%)",
+};
+
 function ChatbotHeader() {
   return (
     <Row css={chatbotHeaderStyle}>
       <Row css={{ display: "flex", margin: "1rem", position: "relative" }}>
         <Avatar squared src={Image} />
-        <Text
-          h6
-          color="white"
-          css={{
-            fontFamily: "'Space Grotesk', sans-serif",
-            marginLeft: "3rem",
-            position: "absolute",
-            top: "50%",
-            msTransform: "translateY(-50%)",
-            transform: "translateY(-50%)",
-          }}
-        >
+        <Text h6 color="white" css={textStyle}>
           Chess Rule Chatbot
         </Text>
       </Row>
