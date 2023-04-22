@@ -15,6 +15,7 @@ const mainWrapperStyle = {
   justifyContent: "center",
   "@media(max-width: 768px)": {
     width: "100%",
+    padding: "0",
   },
 };
 

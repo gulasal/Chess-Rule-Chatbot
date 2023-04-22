@@ -9,9 +9,9 @@ const chatbotBodyStyles = {
   flexDdirection: "column",
   padding: "1% 1.5rem",
 
-  "@media (max-width: 500px)": {
-    height: "100%",
+  "@media (max-width: 768px)": {
     width: "100%",
+    height: "calc(100vh - 9rem)",
   },
 };
 

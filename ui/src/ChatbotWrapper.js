@@ -18,8 +18,10 @@ const chatbotWrapperStyles = {
   "@media(max-width: 768px)": {
     width: "100%",
     height: "100%",
+    margin: "0",
   },
 };
+
 function ChatbotWrapper() {
   const [messages, setMessages] = useState([]);
 
