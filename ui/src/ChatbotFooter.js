@@ -16,6 +16,13 @@ const chatbotFooterStyle = {
   },
 };
 
+const buttonStyles = {
+  width: "3rem",
+  height: "4rem",
+  borderRadius: " 0 0 15px 0 ",
+  "@media(max-width: 768px)": { width: "20%" },
+};
+
 const ChatbotFooter = (props) => {
   // const ChatbotFooter = ({ addMessage }) => {
   //   const [inputValue, setInputValue] = useState("");
@@ -29,6 +36,11 @@ const ChatbotFooter = (props) => {
   //     setInputValue("");
   //   };
   // };
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      props.handleSendClick();
+    }
+  };
   return (
     <Row css={chatbotFooterStyle}>
       <input
@@ -37,19 +49,14 @@ const ChatbotFooter = (props) => {
         id="message"
         name="message"
         placeholder="Enter your message"
-        style={{}}
         value={props.inputValue}
         onChange={props.handleInputChange}
+        onKeyDown={handleKeyDown}
       />
       <Button
         color="success"
         size="xs"
-        css={{
-          width: "3rem",
-          height: "4rem",
-          borderRadius: " 0 0 15px 0 ",
-          "@media(max-width: 768px)": { width: "20%" },
-        }}
+        css={buttonStyles}
         onClick={props.handleSendClick}
       >
         Send
