@@ -36,6 +36,11 @@ const ChatbotFooter = (props) => {
   //     setInputValue("");
   //   };
   // };
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      props.handleSendClick();
+    }
+  };
   return (
     <Row css={chatbotFooterStyle}>
       <input
@@ -46,6 +51,7 @@ const ChatbotFooter = (props) => {
         placeholder="Enter your message"
         value={props.inputValue}
         onChange={props.handleInputChange}
+        onKeyDown={handleKeyDown}
       />
       <Button
         color="success"
