@@ -1,26 +1,43 @@
 import React from "react";
-import { Container, Row } from "@nextui-org/react";
+import { Row } from "@nextui-org/react";
 
-function ChatbotBody(messages) {
+const chatbotBodyStyles = {
+  width: "100%",
+  height: "25rem",
+  overflow: "hidden",
+  display: "flex",
+  flexDdirection: "column",
+  padding: "1% 1.5rem",
+
+  "@media (max-width: 500px)": {
+    height: "100%",
+    width: "100%",
+  },
+};
+
+function ChatbotBody({ messages }) {
   return (
-    <Container
-      fluid
-      className="ChatBody"
-      style={{
-        width: "100%",
-        height: "25rem",
-        overflow: "hidden",
-        display: "flex",
-        flexDdirection: "column",
-        padding: "1% 1.5rem",
-        "@xs": "",
-      }}
-    >
-      <Row className="Wrapper">
-        <span>hi</span>
-      </Row>
-      <Row className="MessageWrapper hide">hi</Row>
-    </Container>
+    <Row css={chatbotBodyStyles}>
+      {messages && messages.length > 0 ? (
+        messages.map((message, index) => (
+          <Row
+            className={`MessageWrapper ${
+              message.sender === "user" ? "user" : "bot"
+            }`}
+            key={index}
+            style={{
+              alignSelf: message.sender === "user" ? "flex-end" : "flex-start",
+            }}
+          >
+            <span>{message.text}</span>
+          </Row>
+        ))
+      ) : (
+        <Row className="Wrapper">
+          <span>No messages yet</span>
+        </Row>
+      )}
+    </Row>
   );
 }
 
