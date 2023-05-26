@@ -5,7 +5,7 @@ import Image from "./assets/Avatar.jpeg";
 const chatbotHeaderStyle = {
   width: "100%",
   height: "5rem",
-  backgroundColor: "#290E44",
+  backgroundColor: "#00254D",
   margin: "0",
   padding: "0",
   borderRadius: "15px 15px 0 0",

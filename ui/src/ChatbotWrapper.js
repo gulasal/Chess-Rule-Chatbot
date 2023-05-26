@@ -2,7 +2,9 @@ import ChatbotHeader from "./ChatbotHeader";
 import ChatbotBody from "./ChatbotBody";
 import { Row } from "@nextui-org/react";
 import ChatbotFooter from "./ChatbotFooter";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+// import { io } from "socket.io-client";
+// const socket = io();
 
 const chatbotWrapperStyles = {
   width: "30rem",
@@ -23,46 +25,43 @@ const chatbotWrapperStyles = {
 };
 
 function ChatbotWrapper() {
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([
+    { text: "Hey ✋! Nice to see you here!", position: "left" },
+  ]);
 
-  const [inputValue, setInputValue] = useState("");
-
-  const handleNewUserMessage = (newMessage) => {
-    // Add user message to messages state
-    setMessages((prevState) => [
-      ...prevState,
-      { text: newMessage, sender: "user" },
-    ]);
-
-    // If user says "hi", respond with a greeting and a question
-    if (newMessage.toLowerCase() === "hi") {
-      setMessages((prevState) => [
-        ...prevState,
-        { text: "Hi! How can I assist you today?", sender: "bot" },
-      ]);
+  const handleInput = (msg, id) => {
+    if (msg !== "") {
+      setMessages([...messages, { text: msg, position: "right" }]);
     }
   };
 
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value);
-  };
-
-  const handleSendClick = () => {
-    if (inputValue.trim()) {
-      setMessages([...messages, { text: inputValue, sender: "user" }]);
-      setInputValue("");
+  useEffect(() => {
+    let lastMessage = messages[messages.length - 1];
+    // if last message is a non-empty question, ask the server
+    if (lastMessage.text !== "" && lastMessage.position === "right") {
+      // socket.emit("client message", lastMessage.text);
     }
-  };
+    // handle server responses
+    // socket.on("bot message", (data) => {
+    //   console.log(data);
+    //   const tempData = data.split("#");
+    //   if (tempData.length === 1) {
+    //     setMessages([...messages, { text: tempData[0], position: "left" }]);
+    //   } else {
+    //     const tempList = tempData[1].split(",");
+    //     setMessages([
+    //       ...messages,
+    //       { text: tempData[0], list: tempList, position: "left" },
+    //     ]);
+    //   }
+    // });
+  }, [messages]);
+
   return (
     <Row css={chatbotWrapperStyles}>
       <ChatbotHeader />
       <ChatbotBody messages={messages} />
-      <ChatbotFooter
-        inputValue={inputValue}
-        handleInputChange={handleInputChange}
-        handleSendClick={handleSendClick}
-        onSendClick={handleNewUserMessage}
-      />
+      <ChatbotFooter handleInput={handleInput} />
     </Row>
   );
 }
