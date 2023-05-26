@@ -1,63 +1,40 @@
 import { Button, Row } from "@nextui-org/react";
-import "./ChatbotFooter.css";
+import * as S from "./style";
+import { useState } from "react";
 
-const chatbotFooterStyle = {
-  width: "100%",
-  height: "4rem",
-  backgroundColor: "#290E44",
-  margin: "0",
-  padding: "0",
-  borderRadius: "0 0 15px 15px",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  "@media(max-width: 768px)": {
-    width: "100%",
-  },
-};
+const ChatbotFooter = ({ handleInput }) => {
+  const [inputValue, setInputValue] = useState("");
 
-const buttonStyles = {
-  width: "3rem",
-  height: "4rem",
-  borderRadius: " 0 0 15px 0 ",
-  "@media(max-width: 768px)": { width: "20%" },
-};
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+  };
 
-const ChatbotFooter = (props) => {
-  // const ChatbotFooter = ({ addMessage }) => {
-  //   const [inputValue, setInputValue] = useState("");
-
-  //   const handleInputChange = (event) => {
-  //     setInputValue(event.target.value);
-  //   };
-
-  //   const handleSendClick = () => {
-  //     addMessage(inputValue);
-  //     setInputValue("");
-  //   };
-  // };
+  const handleSendClick = () => {
+    handleInput(inputValue);
+    setInputValue("");
+  };
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
-      props.handleSendClick();
+      handleSendClick();
     }
   };
   return (
-    <Row css={chatbotFooterStyle}>
+    <Row css={S.chatbotFooterStyle}>
       <input
-        className="messageInput"
+        style={S.FooterStyle}
         type="text"
         id="message"
         name="message"
         placeholder="Enter your message"
-        value={props.inputValue}
-        onChange={props.handleInputChange}
+        value={inputValue}
+        onChange={handleInputChange}
         onKeyDown={handleKeyDown}
       />
       <Button
         color="success"
         size="xs"
-        css={buttonStyles}
-        onClick={props.handleSendClick}
+        css={S.buttonStyles}
+        onClick={handleSendClick}
       >
         Send
       </Button>
