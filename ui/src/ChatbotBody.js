@@ -1,40 +1,71 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Row } from "@nextui-org/react";
-
-const chatbotBodyStyles = {
-  width: "100%",
-  height: "25rem",
-  overflow: "hidden",
-  display: "flex",
-  flexDdirection: "column",
-  padding: "1% 1.5rem",
-
-  "@media (max-width: 768px)": {
-    width: "100%",
-    height: "calc(100vh - 9rem)",
-  },
-};
+import * as S from "./style";
 
 function ChatbotBody({ messages }) {
+  const [chatHistory, setChatHistory] = useState([]);
+  const messagesEndRef = useRef(null);
+
+  useEffect(() => {
+    // Update chat history when messages prop changes
+    if (messages && messages.length > 0) {
+      setChatHistory(messages);
+      scrollToBottom();
+    }
+  }, [messages]);
+
+  function scrollToBottom() {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }
+
   return (
-    <Row css={chatbotBodyStyles}>
-      {messages && messages.length > 0 ? (
-        messages.map((message, index) => (
-          <Row
-            className={`MessageWrapper ${
-              message.sender === "user" ? "user" : "bot"
-            }`}
-            key={index}
-            style={{
-              alignSelf: message.sender === "user" ? "flex-end" : "flex-start",
-            }}
-          >
-            <span>{message.text}</span>
-          </Row>
+    <Row css={S.chatbotBodyStyles}>
+      {chatHistory && chatHistory.length > 0 ? (
+        chatHistory.map((msg) => (
+          <>
+            <Row
+              css={{
+                display: "flex",
+                marginBottom: "0.5rem",
+                marginTop: "0.5rem",
+                height: "auto",
+              }}
+              className={msg.position}
+              key={msg.id} // Assuming each message has a unique "id" property
+            >
+              <Row
+                css={{
+                  padding: "0.5rem 0.8rem",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  maxWidth: "50%",
+                  fontSize: "1.5rem",
+                  color: "white",
+                }}
+              >
+                <span id="input" key={"input"}>
+                  {msg.text}
+                </span>
+              </Row>
+            </Row>
+            <Row
+              css={{
+                display: "flex",
+                marginBottom: "0.5rem",
+                marginTop: "0.5rem",
+                height: "auto",
+              }}
+            >
+              <span id="bot" key={"bot"} ref={messagesEndRef}></span>
+            </Row>
+          </>
         ))
       ) : (
         <Row className="Wrapper">
-          <span>No messages yet</span>
+          <span id="bot" key={"bot"} ref={messagesEndRef}></span>
         </Row>
       )}
     </Row>
