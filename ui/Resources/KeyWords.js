@@ -25,8 +25,8 @@ let recording = false
 let last_question = [];
 
 async function conversation_handler(sentence=""){
-    sentence = sentence.toLowerCase();
-    let words = sentence.split(" ");
+    let words = sentence.toLowerCase().replace(/[!@#$%^&*()+=<>?:"{},./;]/g,"").split(" ");
+    console.log(words)
     let kw = find_keywords(words);
     // Bot questions and human answers and bot questions.---------------------------------
     let bot = bot_response(words);
@@ -128,7 +128,7 @@ function bot_response(words){
     } else if (bot_raise && (["no", "nope", "nein", "nada", "na", "ayewa"].some(val => words.includes(val)))){
         bot_raise = null;
         return questions["enquire"][any_element(questions["enquire"].length)]
-    } else if (!bot_raise && (["yes", "ja", "yup", "da", "yebo"].some(val => words.includes(val)))){
+    } else if (!bot_raise && (["yes", "ja", "yup", "da", "yebo", "ok", "okay", "sure", "cool", "so"].some(val => words.includes(val)))){
         return response.next_ans();
     }
     return "";
@@ -145,4 +145,4 @@ module.exports = {find_keywords, converstaion_handler: conversation_handler}
 
 
 // -------------------------------------------------------------tesing---------------------------------------
-// conversation_handler("king").then((dat)=>{console.log(dat)})
+conversation_handler("what is castling?").then((dat)=>{console.log(dat)})

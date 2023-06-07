@@ -69,19 +69,19 @@
         "Current_Position": ["a1", "h1"],
         "Special_Move": "Castling, with a king",
         "capturing": "Can capture any piece in its path of motion but has to stop on the position of the captured piece",
-        "extended": " Like the bishop, very useful towards end game due to the long range of motion"
+        "extended": " Like the bishop, very useful towards end game due to the long range of motion. Their long-range mobility makes them effective in controlling open ranks and files."
       },
       "Pawn": {
         "steps": " can move one step forwards, if unobstructed ",
         "direction": [" for its first move each pawn is allowed to move two steps forward but normally one step"],
         "points": " is worth 1 points",
-        "Alias": " foot soldier,  \nbut does it with pride and honor",
+        "Alias": " foot soldier, \n but does it with pride and honor",
         "Recording": "",
         "Quantity": 8,
         "Current_Position": ["a2", "b2", "c2", "d2", "e2", "f2", "g2", "h2"],
         "Special_Move": "Promotion, En-Passant and Double step as first move",
         "capturing": " can capture any piece that is on the front diagonal but only one step away.",
-        "extended": " The pawn and bishops make a nice protective duo since they can cover each other and threaten any piece that threatens either of them. like the mob"
+        "extended": "Pawns are essential for controlling space, opening up the board, and supporting other pieces. The pawn and bishops make a nice protective duo since they can cover each other and threaten any piece that threatens either of them. like the mob"
       }
     }
 

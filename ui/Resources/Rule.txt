@@ -72,7 +72,7 @@ in these situations, it is impossible for either player to checkmate their oppon
 
 stalemate is when situation in chess where the player whose turn it is to move is not in check and has no legal move -
 it is normally the last escape for a player in an inferior position to at least get a draw instead of a defeat -
-so if you are leading in points and points, plan your checkmate, guide the opponent into a nicely planned checkmate.
+so if you are leading in pieces and points, plan your checkmate, guide the opponent into a nicely planned checkmate.
 
 recording-moves.
 rank is a row of squares on the chessboard -
@@ -102,16 +102,18 @@ each square of the board is named using algebraic, descriptive, or numeric chess
 in algebraic notation, using white's perspective, files are labeled a through h from left to right, and ranks are labeled 1 through 8 from bottom to top -
 each square is identified by the file and rank which it occupies. the a- through d-files comprise the queenside, while the e- through h-files comprise the kingside.
 
-a king, cannot capure a king; it can only protect the piece putting the other king in check.
+a king, cannot capture a king; it can only protect the piece putting the other king in check.
 white always moves first.
 
 The Queen, on the other hand, is the most powerful and versatile chess piece. Valued at nine points, this major piece can move in any direction. Horizontally, vertically, or diagonally – and cover as many open spaces as available.
 Due to its immense attacking power, the Queen is a vital component in both offensive and defensive strategies.
 
-Alongside the Queen, Rooks and Bishops are essential to a solid game plan. Rooks, valued at five points each, can move horizontally or vertically across the board. Their long-range mobility makes them effective in controlling open ranks and files.
+Alongside the Queen, Rooks and Bishops are essential to a solid game plan. Rooks, valued at five points each, can move horizontally or vertically across the board.
 
 Bishops, valued at three points each, can move diagonally across the board, controlling the color squares they occupy. Two Bishops, one on each color, are a formidable duo when coordinating attacks and defenses.
 
 Knights hold unique importance due to their distinct L-shaped movement. Valued at three points each, they are the only chess pieces capable of jumping over other pieces when necessary. Moreover, Knights are incredibly valuable in the early stages of the game, as they can quickly be maneuvered into optimal positions.
 
-Lastly, while Pawns may be the smallest and least valuable pieces (one point each), they also play a significant role in the game. Pawns are essential for controlling space, opening up the board, and supporting other pieces.
+
+The Sicilian Defense: Considered the most common response to the King's Pawn Opening, you initiate the Sicilian Defense by responding to 1. e4 with c5. It's easy to build on this defense with a variety of different variations, such as the Najdorf, Dragon, or Classical Variations, among others -
+Modern Defense is a Great Opening to Play for a Win with Black
