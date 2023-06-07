@@ -1,3 +1,4 @@
+// Declarations
 const fs =require("fs");
 const readline = require("readline");
 let raw_data = fs.readFileSync('./pieces.json');
@@ -9,16 +10,9 @@ let questions = JSON.parse(Question_data);
 let more = 0;
 let ans_buffer = []
 
-
-
-// const instruction = ["record", "game", "review", "opening", "recording", "start", "old"]
-// const piece = ["king", "queen", "bishop", "knight", "castle", "pawn"];
-// const piece_operator = ["move", "capture", "captured", "many", "start", "position", "place", "placed", "worth",
-//     "value", "direction", "put"];
-// const rule_book =  ["end", "start", "win", "lose", "setup", "layout","placement", "king", "queen", "bishop", "knight",
-//     "castle", "pawn","game", "board", "white", "black", "player", "can", "allowed", "how", "why", "when", "what", "which",
-//     "can", "is", "does", "will", "should", "could", "would"];
 async function answer(keywords){
+    ans_buffer = [];
+    more = 0;
     if (keywords["piece"].length === 1) {
         let t = keywords["piece"][0].charAt(0).toUpperCase() + keywords["piece"][0].slice(1); //Change piece name to upper case for navigate json
         if (keywords["piece operator"].includes("move")) {
@@ -37,13 +31,11 @@ async function answer(keywords){
             return "The " + t + pieces["White"][t]["capturing"];
         }
     } if (keywords["rule_book"].length >= 1){
-        ans_buffer = [];
-        more = 0;
         ans_buffer = await searchFile([keywords["piece"], keywords["piece operator"],keywords["rule_book"]].flat());
         return ans_buffer[more]
     }
 
-}
+}//First checks if keywords match Pieces.json and if not the searches Rule.txt
 function bot_answer(question){
     //     " Let us start from the beginning, do you want me to show you how to set up the board? ",
     //     " How about the pieces now, do you want to learn about How those move? ",
@@ -70,7 +62,7 @@ function bot_answer(question){
                 ans.push(pieces.White[i].steps +" " + pieces.White[i].direction);
             }
         }
-    }else if (question === "A3"){
+    } else if (question === "A3"){
         ans_start = ans_start + " Ah, you want the special moves, you are going to have to pick the one you like the most. \n";
         for (let i in pieces.White) {
             if (pieces.White[i].Special_Move !== "") {
@@ -88,14 +80,13 @@ function bot_answer(question){
         for (let i =0; i < 30; i++){
             ans.push(openings["opening"][any_element(openings["opening"].length)]);
         }
-
     }
     ans[0] = ans_start;
     ans_buffer = [];
     ans_buffer = ans;
     more = 0;
     return ans
-}
+} //bot answers to predetermined questions, needs to be expanded
 function next_ans(){
     more++;
     if (more === ans_buffer.length - 1){
@@ -104,8 +95,7 @@ function next_ans(){
         return ans_buffer[more];
     }
     else return "";
-}
-// searchFile(["Castling"])
+} //Iterates through the answers already found.
 async function searchFile(keywords, file="Rule.txt") {
     const fileStream = fs.createReadStream(file);
     const rl = readline.createInterface({
@@ -148,10 +138,10 @@ async function searchFile(keywords, file="Rule.txt") {
         }
     }
     return ans
-}
+} //search for keywords in Rule.txt. is line by line search
 function any_element(arr_len){
     return Math.floor(Math.random() * arr_len);
-} // return random element in an array
+} //return random element in an array
 
 function score(keyword, from_file){
 
@@ -175,7 +165,7 @@ function score(keyword, from_file){
         }
     }
     return max
-}
+} //ranks the results of the search based on how early keywords is found: earlier is better
 
 function grammar_handler(keywords, words){//"can", "is", "does", "will", "should", "could", "would", "how", "why", "when", "what", "which", "will", "mean"
     if(["when", "can", "could", "would"].some(val => words.includes(val))){
@@ -193,18 +183,6 @@ function grammar_handler(keywords, words){//"can", "is", "does", "will", "should
         keywords["size"] += 5;
     }
     return keywords;
-}//depending on connectors, adds more value to the "score(keyword, from_file)"
-
-//TEST+++++++++++++++++++++++++++======================================================================================
-// const piece_operator = ["move", "capture", "captured", "many", "start", "position", "place", "placed", "worth",
-//     "value", "direction", "put"];
-//
-// console.log(piece_operator.includes("capture"))
-//TEST+++++++++++++++++++++++++++======================================================================================
-
-
-
+} //depending on connectors, adds more value to the, to be optimised "score(keyword, from_file)"
 
 module.exports = {answer, bot_answer, next_ans};
-
-

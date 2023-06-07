@@ -7,7 +7,7 @@ const kws = require('./KeyWords.js');
 const fs = require("fs");
 
 const io = new Server(server); //,{
-// cors: {
+// cors: { //this stays because It is useful
 //     origin: "http://localhost:63342",
 //         methods: ["GET", "POST"]
 // }

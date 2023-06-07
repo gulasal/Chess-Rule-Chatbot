@@ -1,3 +1,4 @@
+// Declarations
 const fs = require('fs');
 let raw_data = fs.readFileSync('./pieces.json');
 let pieces = JSON.parse(raw_data);
@@ -37,13 +38,10 @@ function make_move(move){ //move is eg 'a2', 'a4', 'Black', 'Pawn'
     return board;
 }
 module.exports = { make_move };
-
-
 function check_valid(move){
 
     return true;
 }
-
 function make_board(){
     let i = 1;
     while (i <= 8) {
@@ -70,13 +68,7 @@ function make_board(){
     board["valid"] = true;
     return board;
 }
-
 let add_new_rules = function(rule_title, rule) {
     let jsonData = JSON.stringify({rule_title : rule });
     fs.appendFileSync('Rule.txt', jsonData);
 }
-
-
-let key_terms = fs.readFileSync("./key_terms.json")
-let rule_book = JSON.parse(key_terms);
-
