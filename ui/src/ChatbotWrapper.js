@@ -3,8 +3,12 @@ import ChatbotBody from "./ChatbotBody";
 import { Row } from "@nextui-org/react";
 import ChatbotFooter from "./ChatbotFooter";
 import React, { useState, useEffect } from "react";
-// import { io } from "socket.io-client";
-// const socket = io();
+//change the socket port here for front end
+import { io } from "socket.io-client";
+const socket = io("//localhost:3000");
+socket.on('connect', function () {
+  console.log("socket connected");
+});
 
 const chatbotWrapperStyles = {
   width: "30rem",
@@ -39,22 +43,23 @@ function ChatbotWrapper() {
     let lastMessage = messages[messages.length - 1];
     // if last message is a non-empty question, ask the server
     if (lastMessage.text !== "" && lastMessage.position === "right") {
-      // socket.emit("client message", lastMessage.text);
+      console.log(lastMessage)
+      socket.emit("clientMessage", lastMessage.text);
     }
     // handle server responses
-    // socket.on("bot message", (data) => {
-    //   console.log(data);
-    //   const tempData = data.split("#");
-    //   if (tempData.length === 1) {
-    //     setMessages([...messages, { text: tempData[0], position: "left" }]);
-    //   } else {
-    //     const tempList = tempData[1].split(",");
-    //     setMessages([
-    //       ...messages,
-    //       { text: tempData[0], list: tempList, position: "left" },
-    //     ]);
-    //   }
-    // });
+    socket.on("serverMessage", (data) => {
+      console.log(data);
+      const tempData = data.split("#");
+      if (tempData.length === 1) {
+        setMessages([...messages, { text: tempData[0], position: "left" }]);
+      } else {
+        const tempList = tempData[1].split(",");
+        setMessages([
+          ...messages,
+          { text: tempData[0], list: tempList, position: "left" },
+        ]);
+      }
+    });
   }, [messages]);
 
   return (
