@@ -47,7 +47,7 @@ function bot_answer(question){
     //     " "
     let ans = []
     ans[0] = "";
-    let ans_start = questions["positive_answer"][any_element(questions["positive_answer"].length)]
+    let ans_start = "";//questions["positive_answer"][any_element(questions["positive_answer"].length)]
     if (question === "A1"){
         ans_start = ans_start + ". I'll do the white pieces and lets see if you can do the black pieces."
         for (let i in pieces.White) {
@@ -80,7 +80,7 @@ function bot_answer(question){
         for (let i =0; i < 30; i++){
             ans.push(openings["opening"][any_element(openings["opening"].length)]);
         }
-    }else if (question === "A99"){
+    } else if (question === "A99"){
             ans.push(questions["agim"][any_element(questions["agim"].length)]);
     }
     ans[0] = ans_start;

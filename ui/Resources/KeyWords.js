@@ -3,7 +3,7 @@ const fs = require("fs");
 const board = require('./board.js');
 const response = require("./Responses.js");
 let key_terms = fs.readFileSync("./key_terms.json")
-let rule_book = JSON.parse(key_terms);
+let rule_book = {"look":[]}//JSON.parse(key_terms);
 let Question_data = fs.readFileSync('./Questions.json');
 let questions = JSON.parse(Question_data);
 
@@ -24,7 +24,6 @@ let last_question = [];
 
 async function conversation_handler(sentence=""){
     let words = sentence.toLowerCase().replace(/[!@#$%^&*()+=<>?:"{},./;]/g,"").split(" ");
-    console.log(words)
     let kw = find_keywords(words);
     // Bot questions and human answers and bot questions.---------------------------------
     let bot = bot_response(words);
@@ -97,22 +96,23 @@ function bot_is_move(words){
 function bot_instruction(instr){
     //const instruction = ["record", "game", "review", "opening", "recording", "start", "old", "stop", "end", "begin"]
     if (instr.length >= 2){
-        if(["stop", "end"].every(val => instr.includes(val)) &&
-            ["recording", "record", "game" ].every(val => instr.includes(val))){
+        if(["start", "begin"].some(val => instr.includes(val)) &&
+            ["recording", "record", "game" ].some(val => instr.includes(val))){
             recording = true;
             return "I am now recording the moves you pass me. Remember I need this format: 'piece name' 'origin sqaure'" +
                 " 'destination square'. \n In the case of castling, just say 'castle', then 'castle square'";
-        }if(["start", "begin"].every(val => instr.includes(val)) &&
-            ["recording", "record", "game" ].every(val => instr.includes(val))){
+        }if(["stop", "end"].some(val => instr.includes(val)) &&
+            ["recording", "record", "game" ].some(val => instr.includes(val))){
             recording = false;
             return "I am no-longer recording. to start again, you just need to ask 'start recording'";
         }if(["opening"].some(val => instr.includes(val))) {
             return questions["positive_answer"][any_element(questions["positive_answer"].length)] +
-                Response.bot_answer("A5");
+                response.bot_answer("A5");
         }
     }
     return "";
 }//instructions, mainly for openings and or recording
+
 function bot_response(words){
     if (words[0] === ""){
         return questions["probe"][any_element(questions["probe"].length)]
