@@ -48,11 +48,10 @@ function bot_answer(question){
     let ans_start = questions["positive_answer"][any_element(questions["positive_answer"].length)]
     if (question === "A1"){
 
-        ans_start = ans_start + ". I'll do the white pieces and lets see if you can do the black pieces." +
-            "+ \n The " + i + " starts at position: "
+        ans_start = ans_start + ". I'll do the white pieces and lets see if you can do the black pieces."
         for (let i in pieces.White) {
             for (let j in pieces.White[i].Current_Position) {
-                ans.push(" " +pieces.White[i].Current_Position[j]);
+                ans.push(i + " " +pieces.White[i].Current_Position[j]);
             }
         }
     } else if (question === "A2"){
@@ -70,7 +69,6 @@ function bot_answer(question){
             }
         }
     } else if (question === "A4"){
-        ans_start = ans_start + " I'll start with the king ";
         for (let i in pieces.White) {
             if (pieces.White[i].extended !== "") {
                 ans.push(pieces.White[i].extended);
@@ -85,7 +83,7 @@ function bot_answer(question){
     ans_buffer = [];
     ans_buffer = ans;
     more = 0;
-    return ans
+    return ans[0] +" " + ans[1] + " just let me know if you require more info. 'next or yes will do'"
 } //bot answers to predetermined questions, needs to be expanded
 function next_ans(){
     more++;
