@@ -3,7 +3,7 @@ const fs = require("fs");
 const board = require('./board.js');
 const response = require("./Responses.js");
 let key_terms = fs.readFileSync("./key_terms.json")
-let rule_book = {"look":[]}//JSON.parse(key_terms);
+let rule_book = JSON.parse(key_terms);
 let Question_data = fs.readFileSync('./Questions.json');
 let questions = JSON.parse(Question_data);
 
