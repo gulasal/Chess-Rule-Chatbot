@@ -6,6 +6,8 @@ const { Server } = require("socket.io");
 const kws = require('./KeyWords.js');
 const fs = require("fs");
 let timeoutId;
+let prompt_flag = false, idle_flag = false;
+
 
 const io = new Server(server); //,{
 // cors: { //this stays because It is useful
@@ -27,12 +29,15 @@ io.on('connect', (socket) => {
 
     socket.on('clientMessage', (data) => {
         console.log('received from client: ' + data);
-        clearTimeout(timeoutId);
-        timeoutId = setTimeout(() => {
-            kws.converstaion_handler("_").then((result)=>{
-                socket.emit('serverMessage', result);
-            })
-        }, 1000 * 10);
+        // if (!prompt_flag) {
+        //     clearTimeout(timeoutId);
+        //     timeoutId = setTimeout(() => {
+        //         kws.converstaion_handler("_").then((result) => {
+        //             socket.emit('serverMessage', result);
+        //             prompt_flag = true;
+        //         })
+        //     }, 1000 * 10);
+        // }
         kws.converstaion_handler(data).then((result)=>{
             socket.emit('serverMessage', result);
         })

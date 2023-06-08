@@ -8,6 +8,7 @@ let openings = JSON.parse(opening_data);
 let Question_data = fs.readFileSync('./Questions.json');
 let questions = JSON.parse(Question_data);
 let more = 0;
+let limit = 0;
 let ans_buffer = []
 
 async function answer(keywords){
@@ -32,6 +33,7 @@ async function answer(keywords){
         }
     } if (keywords["rule_book"].length >= 1){
         ans_buffer = await searchFile([keywords["piece"], keywords["piece operator"],keywords["rule_book"]].flat());
+        limit = ans_buffer.length;
         return ans_buffer[more]
     }
 
@@ -47,7 +49,6 @@ function bot_answer(question){
     ans[0] = "";
     let ans_start = questions["positive_answer"][any_element(questions["positive_answer"].length)]
     if (question === "A1"){
-
         ans_start = ans_start + ". I'll do the white pieces and lets see if you can do the black pieces."
         for (let i in pieces.White) {
             for (let j in pieces.White[i].Current_Position) {
@@ -65,7 +66,7 @@ function bot_answer(question){
         ans_start = ans_start + " Ah, you want the special moves, you are going to have to pick the one you like the most. \n";
         for (let i in pieces.White) {
             if (pieces.White[i].Special_Move !== "") {
-                ans.push(" " + "The " + i + " is: it " +  pieces.White[i].Special_Move + "  \n");
+                ans.push(" " + "The " + i + " is: " +  pieces.White[i].Special_Move + "  \n");
             }
         }
     } else if (question === "A4"){
@@ -85,17 +86,18 @@ function bot_answer(question){
     ans[0] = ans_start;
     ans_buffer = [];
     ans_buffer = ans;
+    limit = ans.length;
     more = 1;
     return ans[0] +" " + ans[1] + " shall I continue? ";
 } //bot answers to predetermined questions, needs to be expanded
 function next_ans(){
     more++;
-    if (more === ans_buffer.length - 1){
+    if (more === limit - 1){
         return "This is the last one I'm afraid: " + ans_buffer[more];
     }else if( more < ans_buffer.length - 1){
         return ans_buffer[more];
     }
-    else return "";
+    else return questions["change_subject"][any_element(questions["agim"].length)];
 } //Iterates through the answers already found.
 async function searchFile(keywords, file="Rule.txt") {
     const fileStream = fs.createReadStream(file);
