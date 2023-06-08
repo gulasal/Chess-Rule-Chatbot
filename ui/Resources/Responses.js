@@ -51,7 +51,7 @@ function bot_answer(question){
         ans_start = ans_start + ". I'll do the white pieces and lets see if you can do the black pieces."
         for (let i in pieces.White) {
             for (let j in pieces.White[i].Current_Position) {
-                ans.push(i + " " +pieces.White[i].Current_Position[j]);
+                ans.push(" " +pieces.White[i].Current_Position[j]);
             }
         }
     } else if (question === "A2"){
@@ -69,6 +69,7 @@ function bot_answer(question){
             }
         }
     } else if (question === "A4"){
+        ans_start = ans_start + " I'll start with the king ";
         for (let i in pieces.White) {
             if (pieces.White[i].extended !== "") {
                 ans.push(pieces.White[i].extended);
@@ -78,12 +79,14 @@ function bot_answer(question){
         for (let i =0; i < 30; i++){
             ans.push(openings["opening"][any_element(openings["opening"].length)]);
         }
+    }else if (question === "A99"){
+            ans.push(questions["agim"][any_element(questions["agim"].length)]);
     }
     ans[0] = ans_start;
     ans_buffer = [];
     ans_buffer = ans;
-    more = 0;
-    return ans[0] +" " + ans[1] + " just let me know if you require more info. 'next or yes will do'"
+    more = 1;
+    return ans[0] +" " + ans[1] + " shall I continue? ";
 } //bot answers to predetermined questions, needs to be expanded
 function next_ans(){
     more++;
