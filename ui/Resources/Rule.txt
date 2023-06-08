@@ -105,15 +105,7 @@ each square is identified by the file and rank which it occupies. the a- through
 a king, cannot capture a king; it can only protect the piece putting the other king in check.
 white always moves first.
 
-who moves first? white always moves first.
-
-Alongside the Queen, Rooks and Bishops are essential to a solid game plan. Rooks, valued at five points each, can move horizontally or vertically across the board.
-
-Bishops, valued at three points each, can move diagonally across the board, controlling the color squares they occupy. Two Bishops, one on each color, are a formidable duo when coordinating attacks and defenses.
-
 Knights hold unique importance due to their distinct L-shaped movement. Valued at three points each, they are the only chess pieces capable of jumping over other pieces when necessary. Moreover, Knights are incredibly valuable in the early stages of the game, as they can quickly be maneuvered into optimal positions.
-
 
 The Sicilian Defense: Considered the most common response to the King's Pawn Opening, you initiate the Sicilian Defense by responding to 1. e4 with c5. It's easy to build on this defense with a variety of different variations, such as the Najdorf, Dragon, or Classical Variations, among others -
 Modern Defense is a Great Opening to Play for a Win with Black.
-

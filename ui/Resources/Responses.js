@@ -51,7 +51,7 @@ function bot_answer(question){
         ans_start = ans_start + ". I'll do the white pieces and lets see if you can do the black pieces."
         for (let i in pieces.White) {
             for (let j in pieces.White[i].Current_Position) {
-                ans.push(" " +pieces.White[i].Current_Position[j]);
+                ans.push(i + " " +pieces.White[i].Current_Position[j]);
             }
         }
     } else if (question === "A2"){
