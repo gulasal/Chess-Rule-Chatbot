@@ -26,7 +26,7 @@ async function answer(keywords){
             return "The " + t + pieces["White"][t]["steps"];
         } else if(["position", "placed", "place", "start", "put"].some(val => keywords["piece operator"].includes(val))){
             return "The " + t + "'s starting position is " + pieces["White"][t]["Current_Position"] +" for white";
-        } else if(["worth", "value"].some(val => keywords["piece operator"].includes(val))) {
+        } else if(["worth", "value", "points"].some(val => keywords["piece operator"].includes(val))) {
             return "The " + t + pieces["White"][t]["points"];
         } else if(["capture", "take"].some(val => keywords["piece operator"].includes(val))) {
             return "The " + t + pieces["White"][t]["capturing"];

@@ -15,7 +15,7 @@ const grammar = ["can", "is", "does", "will", "should", "could", "would", "how",
 const instruction = ["record", "game", "review", "opening", "recording", "start", "old", "stop", "end", "begin", "agim"]
 const piece = ["king", "queen", "bishop", "knight", "castle", "pawn"];
 const piece_operator = ["move", "capture", "captured", "many", "start", "position", "place", "placed", "worth",
-    "value", "direction", "put", "special"];
+    "value", "direction", "put", "special", "points"];
 
 let bot_question = 0;
 let bot_raise = false;

@@ -35,7 +35,7 @@
 			" has to land in the same colour square it departed.",
 			" Each bishop occupies a different colour square and is limited to that colour diagonal",
 			"The bishops cannot \"jump\" over any pieces in its way"],
-        "points": "is worth 3 points",
+        "points": " is worth 3 points",
         "Alias": "",
         "Recording": "B",
         "Quantity": 2,
