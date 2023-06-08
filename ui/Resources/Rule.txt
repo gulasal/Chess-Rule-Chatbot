@@ -3,7 +3,7 @@ name chatbot,
 version 1.0.0.3,
 
 chess is a two-player abstract strategy board game -
-the object or objective of the game is to checkmate the opponent’s king -
+the goal, object or objective of the game is to checkmate the opponent’s king -
 the King’s safety and positioning are paramount -
 the King can only move one square at a time in any direction, it must be protected at all costs.
 
@@ -25,7 +25,7 @@ the recommendation it is a good idea when it can get your king out of the center
 it helps to bring one of your rooks towards the center of the board where it can be more active.
 
 en-passant is capturing a pawn which skipped a threatened position on the first move by skipping two steps -
-en passant can only be carried out by a pawn on another pawn
+en passant can only be carried out by a pawn on another pawn -
 when i told you how a pawn moves, i told you on first move, the paw can move 2 steps? yeah, well you can't skip a threatened position -
 if you try that, the other player may make an "en passant" or "in passing" capture (french word of the day !!!) with the pawn -
 although the pawn has passed the capture square of the opposing side, that player can move his or her piece diagonally, as it does in capture, to the square that the other player had skipped -
@@ -74,7 +74,7 @@ stalemate is when situation in chess where the player whose turn it is to move i
 it is normally the last escape for a player in an inferior position to at least get a draw instead of a defeat -
 so if you are leading in pieces and points, plan your checkmate, guide the opponent into a nicely planned checkmate.
 
-recording-moves.
+recording moves and recording games
 rank is a row of squares on the chessboard -
 the chessboard is made up of 8 ranks, numbered 1 to 8 -
 rank 1 is the row closest to the white player and rank 8 is the row closest to the black player -
@@ -109,3 +109,16 @@ Knights hold unique importance due to their distinct L-shaped movement. Valued a
 
 The Sicilian Defense: Considered the most common response to the King's Pawn Opening, you initiate the Sicilian Defense by responding to 1. e4 with c5. It's easy to build on this defense with a variety of different variations, such as the Najdorf, Dragon, or Classical Variations, among others -
 Modern Defense is a Great Opening to Play for a Win with Black.
+
+A fork is one of a basic chess tactic that consists of a single piece attacking two or more pieces at the same time
+The attacking piece is known as the forking piece, while the attacked troops are known as the forked pieces.
+Best forks come from a knight, because a forking knight cannot be captured by the pieces it is threatening, it is also a minor piece, it can be traded off almost with no restrictions -
+The deadliest forks are the ones that are forcing, involving an attack on the enemy king and create an inescapable threat (the king always has to escape).
+
+A discovered check happens when a piece moves out of the way to uncover a check given by another piece -
+The discovered check is a kind of discovered attacks it is usually more powerful than a regular discovered attack because it is a forcing move that requires the other player to react -
+The discovered check can be a crushing tactic because it can catch your opponent off guard, it forces the other player to respond to the check, giving you enough time to do severe damage.
+
+A pin is a tactic you can use to restrict one or more of your opponent's pieces -
+You can do it by attacking the other player's forces in a way that allows you to explore a much greater vulnerability if the attacked piece moves -
+Usually, the pinned piece blocks an attack to a more valuable piece, but it could also protect a key defender of the position or even impede a checkmate.
