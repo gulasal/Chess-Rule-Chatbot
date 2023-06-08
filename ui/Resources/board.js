@@ -19,8 +19,7 @@ function make_move(move){ //move is eg 'a2', 'a4', 'Black', 'Pawn'
     } if (d==="") {
         board[step[0]] = "";
         board[step[1]] = step[2] + " " + step[3];
-        record = step[2] + " " + step[3] + " " + step[0] + " - " + step[1];
-        return [board, record]
+        record = record + ". "+step[2] + " " + step[3] + " " + step[0] + " - " + step[1];
     } else {
         if (step[0][0] === "a"){
             board[pieces[step[2]]["King"]["Current_Position"]] = "";
@@ -28,14 +27,14 @@ function make_move(move){ //move is eg 'a2', 'a4', 'Black', 'Pawn'
             board[pieces[step[2]]["Castle"]["Current_Position"][1]] = "";
             board["d" + step[0][1]] = step[2] + " Castle";
         } else if (step[0][0] === "h"){
-            board[pieces[step[2]]["king"]["Current_Position"]] = "";
+            board[pieces[step[2]]["King"]["Current_Position"]] = "";
             board["g" + step[0][1]] = step[2] + " King";
             board[pieces[step[2]]["Castle"]["Current_Position"][1]] = "";
             board["f" + step[0][1]] = step[2] + " Castle";
-
         }
+        record = record +". "+ step[2] + " King O-O " + step[0];
     }
-    return board;
+    return [board, record];
 }
 module.exports = { make_move };
 function check_valid(move){

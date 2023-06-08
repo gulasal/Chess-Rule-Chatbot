@@ -32,23 +32,20 @@ async function conversation_handler(sentence=""){
     }
     // Bot questions finished -------------------------------------------------------------
     // Human questions
-    // If keywords too few, ask repeat
-    if (kw["size"] < 1){
-        return questions["not_understanding"][any_element(questions["not_understanding"].length)];
-    }
-    //Check if it is a move and the move is recorded:------------------
     if (recording && bot_is_move(words)){
         return "move recorded"
-    }
-    // Check if it is an instruction and act accordingly
+    }//Check if it is a move and the move is recorded:------------------
+    if (kw["size"] < 1){
+        return questions["not_understanding"][any_element(questions["not_understanding"].length)];
+    }// If keywords too few, ask repeat
     bot = bot_instruction(kw["instruction"]);
     if (!(bot === "")){
         return bot;
-    }
+    }// Check if it is an instruction and act accordingly
     let b = response.answer(kw)
 
     return b
-} //handles all that chats and assignes them accordingly
+} //handles all that chats and assigns them accordingly
 
 function find_keywords(words){
     let keywords = {"piece": [], "piece operator": [], "rule_book": [], "instruction": [], "size": 0}
@@ -77,7 +74,7 @@ function find_keywords(words){
 function bot_is_move(words){
     let step = ["","","",""];
     let j = 0;
-    for (let word in words){
+    for (let word of words){
         if ((/[a-h]/i.test(word[0])) && (/[1-8]/i.test(word[1])) && (j < 2)){
             step[j] = word;
             j++;
@@ -88,9 +85,9 @@ function bot_is_move(words){
         }
     }
     if (["castle", "castling"].some(val => words.includes(val))&& j > 0) {
-        return board_record.push(board.make_move(["castling", step]));
+        return board_record = (board.make_move(["castling", step]));
     } else if (step[0] !== "" && step[1] !== "" && step[2] !== "" && step[3] !== ""){
-        return board_record.push(board.make_move(["", step]));
+        return board_record = (board.make_move(["", step]));
     } else return null;
 }//Checks if it is a move
 function bot_instruction(instr){
@@ -108,6 +105,8 @@ function bot_instruction(instr){
         }if(["opening"].some(val => instr.includes(val))) {
             return questions["positive_answer"][any_element(questions["positive_answer"].length)] +
                 response.bot_answer("A5");
+        }if (["review", "game"].every(val => instr.includes(val))) {
+            return board_record[1];
         }
     }
     return "";
@@ -132,18 +131,13 @@ function bot_response(words){
     }
     return "";
 } //Automated responses to automated predefined questions
-// bot_raise = true;
-// bot_question = 1
-// conversation_handler(sentence="Yes").then((i)=>{console.log(i)})
+
 
 function any_element(arr_len){
     return Math.floor(Math.random() * arr_len);
 } //Chooses random element in anny array
 
-conversation_handler(sentence="_")
 module.exports = {find_keywords, converstaion_handler: conversation_handler}
 
 
-
-// -------------------------------------------------------------tesing---------------------------------------
-// conversation_handler("what is castling?").then((dat)=>{console.log(dat)})
+// -------------------------------------------------------------testing---------------------------------------

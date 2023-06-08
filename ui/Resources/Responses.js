@@ -57,9 +57,9 @@ function bot_answer(question){
         }
     } else if (question === "A2"){
         for (let i in pieces.White) {
-            //ans = ans + i + "starts at position: ";
-            for (let j in pieces.White[i]) {
-                ans.push(pieces.White[i].steps +" " + pieces.White[i].direction);
+            ans.push("The " + i + " " + pieces.White[i].steps + " ");
+                for (let j in pieces.White[i].direction) {
+                ans.push("The " + i + " " + pieces.White[i].direction[j]);
             }
         }
     } else if (question === "A3"){
@@ -97,7 +97,7 @@ function next_ans(){
     }else if( more < ans_buffer.length - 1){
         return ans_buffer[more];
     }
-    else return questions["change_subject"][any_element(questions["agim"].length)];
+    else return questions["change_subject"][any_element(questions["change_subject"].length)];
 } //Iterates through the answers already found.
 async function searchFile(keywords, file="Rule.txt") {
     const fileStream = fs.createReadStream(file);

@@ -45,9 +45,10 @@
         "extended": " The bishop is really useful towards the end of the game due to its range, try and keep the bishops as close to the main diagonals as possible, "
       },
       "Knight": {
-        "steps": " can move four steps in total, even when unobstructed ",
+        "steps": " can move four steps in total, even when obstructed.",
         "direction": ["in an L-shape. It can move: two squares in any direction vertically followed by one square horizontally",
-            "or two squares in any direction horizontally followed by one square vertically"],
+            "or two squares in any direction horizontally followed by one square vertically",
+            "The final square should be empty or have a piece to be captured"],
         "points": "is worth 3 points",
         "Alias": "also known as the Horse...  \n don't ask me why it is a horse",
         "Recording": "N",
