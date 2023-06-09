@@ -78,9 +78,9 @@ function bot_is_move(words){
         if ((/[a-h]/i.test(word[0])) && (/[1-8]/i.test(word[1])) && (j < 2)){
             step[j] = word;
             j++;
-        } if ((word === "white")){//|| t==="Black")){
+        } else if ((word === "white") || (word==="Black")){
             step[2] = word.charAt(0).toUpperCase() + word.slice(1);
-        } if (piece.includes(word) ){
+        } else if (piece.includes(word) ){
             step[3] = word.charAt(0).toUpperCase() + word.slice(1);
         }
     }
@@ -141,3 +141,4 @@ module.exports = {find_keywords, converstaion_handler: conversation_handler}
 
 
 // -------------------------------------------------------------testing---------------------------------------
+

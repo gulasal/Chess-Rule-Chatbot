@@ -63,6 +63,9 @@
   "not_understanding":
   ["I'm afraid I do not understand", "what do you mean by that", "I don't know what you mean", "could you rephrase please",
     "I'm not sure I understand what you mean.", "Would you please rephrase that? I want to make sure I understand you correctly.",
-    "I'm completely lost", "Come again", "I dont think I got that", "I don't get it", "huh"]
+    "I'm completely lost", "Come again", "I dont think I got that", "I don't get it", "huh"],
+  "more":
+  [" shall I continue? ", " do you require more information? ", " shall I keep going? ", " there is more, do you want it ",
+    " want more? ", " shall I proceed? "]
 
 }

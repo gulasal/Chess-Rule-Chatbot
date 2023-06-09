@@ -30,6 +30,8 @@ async function answer(keywords){
             return "The " + t + pieces["White"][t]["points"];
         } else if(["capture", "take"].some(val => keywords["piece operator"].includes(val))) {
             return "The " + t + pieces["White"][t]["capturing"];
+        } else if (keywords["size"] === 0){
+            return "Yes " + t + "is one of the pieces but, " + questions["not_understanding"][any_element(questions["not_understanding"].length)];
         }
     } if (keywords["rule_book"].length >= 1){
         ans_buffer = await searchFile([keywords["piece"], keywords["piece operator"],keywords["rule_book"]].flat());
@@ -95,7 +97,7 @@ function next_ans(){
     if (more === limit - 1){
         return "This is the last one I'm afraid: " + ans_buffer[more];
     }else if( more < ans_buffer.length - 1){
-        return ans_buffer[more];
+        return ans_buffer[more] + questions["more"][any_element(questions["more"].length)];
     }
     else return questions["change_subject"][any_element(questions["change_subject"].length)];
 } //Iterates through the answers already found.

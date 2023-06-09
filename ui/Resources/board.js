@@ -59,11 +59,11 @@ function make_board(){
             board[pieces.White[key1].Current_Position[key2]] = "White " + key1;
         }
     }
-    // for (let key1 in pieces.Black) {
-    //     for (let key2 in pieces.Black[key1].Current_Position) {
-    //         board[pieces.Black[key1].Current_Position[key2]] = "Black " + key1;
-    //     }
-    // }
+    for (let key1 in pieces.Black) {
+        for (let key2 in pieces.White[key1].Current_Position) {
+            board[pieces.Black[key1].Current_Position[key2]] = "Black " + key1;
+        }
+    }
     board["valid"] = true;
     return board;
 }
@@ -71,3 +71,4 @@ let add_new_rules = function(rule_title, rule) {
     let jsonData = JSON.stringify({rule_title : rule });
     fs.appendFileSync('Rule.txt', jsonData);
 }
+console.log(make_board())
