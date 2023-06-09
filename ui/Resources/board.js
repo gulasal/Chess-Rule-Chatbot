@@ -71,4 +71,3 @@ let add_new_rules = function(rule_title, rule) {
     let jsonData = JSON.stringify({rule_title : rule });
     fs.appendFileSync('Rule.txt', jsonData);
 }
-console.log(make_board())

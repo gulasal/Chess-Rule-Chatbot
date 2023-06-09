@@ -14,6 +14,7 @@ let ans_buffer = []
 async function answer(keywords){
     ans_buffer = [];
     more = 0;
+    console.log(keywords["size"])
     if (keywords["piece"].length === 1) {
         let t = keywords["piece"][0].charAt(0).toUpperCase() + keywords["piece"][0].slice(1); //Change piece name to upper case for navigate json
         if (keywords["piece operator"].includes("move")) {
@@ -30,8 +31,8 @@ async function answer(keywords){
             return "The " + t + pieces["White"][t]["points"];
         } else if(["capture", "take"].some(val => keywords["piece operator"].includes(val))) {
             return "The " + t + pieces["White"][t]["capturing"];
-        } else if (keywords["size"] === 0){
-            return "Yes " + t + "is one of the pieces but, " + questions["not_understanding"][any_element(questions["not_understanding"].length)];
+        } else if (keywords["size"] === 2){
+            return "Yes, the " + t + " is one of the pieces but, " + questions["not_understanding"][any_element(questions["not_understanding"].length)];
         }
     } if (keywords["rule_book"].length >= 1){
         ans_buffer = await searchFile([keywords["piece"], keywords["piece operator"],keywords["rule_book"]].flat());
@@ -95,9 +96,9 @@ function bot_answer(question){
 function next_ans(){
     more++;
     if (more === limit - 1){
-        return "This is the last one I'm afraid: " + ans_buffer[more];
+        return "Lastly: " + ans_buffer[more];
     }else if( more < ans_buffer.length - 1){
-        return ans_buffer[more] + questions["more"][any_element(questions["more"].length)];
+        return ans_buffer[more] + "," + questions["more"][any_element(questions["more"].length)];
     }
     else return questions["change_subject"][any_element(questions["change_subject"].length)];
 } //Iterates through the answers already found.

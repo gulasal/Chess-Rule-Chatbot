@@ -42,9 +42,9 @@ async function conversation_handler(sentence=""){
     if (!(bot === "")){
         return bot;
     }// Check if it is an instruction and act accordingly
-    let b = response.answer(kw)
+    let find = response.answer(kw)
 
-    return b
+    return find
 } //handles all that chats and assigns them accordingly
 
 function find_keywords(words){
