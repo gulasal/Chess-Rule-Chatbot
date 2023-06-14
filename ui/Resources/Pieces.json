@@ -74,7 +74,8 @@
       },
       "Pawn": {
         "steps": " can move one step forwards, if unobstructed ",
-        "direction": [" for its first move each pawn is allowed to move two steps forward but normally one step"],
+        "direction": [" for its first move each pawn is allowed to move two steps forward but normally one step",
+            " Is the only piece that cannot move backwards!"],
         "points": " is worth 1 points",
         "Alias": " foot soldier, \n but does it with pride and honor",
         "Recording": "",

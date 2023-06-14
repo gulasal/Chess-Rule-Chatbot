@@ -8,11 +8,13 @@ the King’s safety and positioning are paramount -
 the King can only move one square at a time in any direction, it must be protected at all costs.
 
 There are 32 pieces in total -
+there are 64 squares in total on the board -
 each player controls 16 pieces of six types on a chessboard king, queen, bishop, knight, castle, pawn -
 each type of piece moves in a distinct way -
 a game can end in various ways, checkmate, resignation or a draw.
 
 capturing means taking a piece that is in a threatened position -
+Captures are indicated by an x between the piece being moved and its destination on record-
 a threatened piece is one that is at risk of being captured -
 a piece can be taken if it is at the end of path of an opponent's piece -
 for the bishop, castle and queen, it just has to be in the way, but the capturing piece has to stop as soon it has captured the threatened piece.
@@ -22,7 +24,8 @@ there are conditions neither the king nor the rook has previously moved -
 the squares between the king and the rook are vacant, the king does not leave, cross over, or finish on a square attacked by an enemy piece -
 there aren't any pieces between the king and the rook taking part in the castling move -
 the recommendation it is a good idea when it can get your king out of the center of the board into a safer position -
-it helps to bring one of your rooks towards the center of the board where it can be more active.
+it helps to bring one of your rooks towards the center of the board where it can be more active -
+indicated by either O-O (kingside) or O-O-O (queenside).
 
 en-passant is capturing a pawn which skipped a threatened position on the first move by skipping two steps -
 en passant can only be carried out by a pawn on another pawn -
@@ -74,9 +77,11 @@ stalemate is when situation in chess where the player whose turn it is to move i
 it is normally the last escape for a player in an inferior position to at least get a draw instead of a defeat -
 so if you are leading in pieces and points, plan your checkmate, guide the opponent into a nicely planned checkmate.
 
-recording moves and recording games
+recording moves and recording games use algebraic notation where each -
+each square on the board is identified by its file letter (a-h) followed by its rank number (1-8) -
 rank is a row of squares on the chessboard -
 the chessboard is made up of 8 ranks, numbered 1 to 8 -
+For example: e4 means moving a piece to the e4 square while Nf3 means moving a knight to the f3 square -
 rank 1 is the row closest to the white player and rank 8 is the row closest to the black player -
 the pieces are initially set up on ranks 1 and 2 for white and ranks 7 and 8 for black -
 the ranks are an important part of chess notation as they are used to identify the position of pieces on the board.
@@ -110,8 +115,8 @@ Knights hold unique importance due to their distinct L-shaped movement. Valued a
 The Sicilian Defense: Considered the most common response to the King's Pawn Opening, you initiate the Sicilian Defense by responding to 1. e4 with c5. It's easy to build on this defense with a variety of different variations, such as the Najdorf, Dragon, or Classical Variations, among others -
 Modern Defense is a Great Opening to Play for a Win with Black.
 
-A fork is one of a basic chess tactic that consists of a single piece attacking two or more pieces at the same time
-The attacking piece is known as the forking piece, while the attacked troops are known as the forked pieces.
+A fork is one of a basic chess tactic that consists of a single piece attacking two or more pieces at the same time -
+The attacking piece is known as the forking piece, while the attacked troops are known as the forked pieces -
 Best forks come from a knight, because a forking knight cannot be captured by the pieces it is threatening, it is also a minor piece, it can be traded off almost with no restrictions -
 The deadliest forks are the ones that are forcing, involving an attack on the enemy king and create an inescapable threat (the king always has to escape).
 
@@ -128,6 +133,20 @@ Queen's gambit (d4 d5 c4) White appears to sacrifice the c-pawn but  Black canno
 King's gambit (e4 e5 f4) White offers a pawn to divert the black e-pawn, if accepted, White may play d4 and Bxf4, regaining the gambit pawn with central domination, or direct their forces against the weak square f7 with moves such as Nf3, Bc4, 0-0, and g3 -
 A downside to the King's Gambit is that it weakens White's king's position, exposing it to the latent threat of ...Qh4+ (or ...Be7–h4+), which may force White to give up castling rights.
 
+Some common mistakes made by beginners in chess include moving their pieces without a plan or purpose -
+not developing their pieces properly at the start of the game -
+not paying attention to their opponent’s threats or moves -
+not protecting their king properly or castling too late or not at all -
+not taking advantage of opportunities to capture their opponent’s pieces or gain material advantage among others.
 
+The Elo rating system in chess measures the relative skill levels of players by assigning them numerical ratings based on their performance against other rated players -
+After playing against another rated player, both players’ ratings are updated based on whether they won or lost and how likely that outcome was based on their ratings before the game -
+The highest rating ever achieved by a player is 2882.
+
+Blitz chess is a fast-paced version of chess where each player has less than 10 minutes to make all their moves during the game.
+
+Bullet chess is an even faster-paced version of chess where each player has less than 3 minutes to make all their moves during the game.
+
+Rapid chess is another fast-paced version of chess where each player has between 10 and 60 minutes to make all their moves during the game.
 
 
