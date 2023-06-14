@@ -7,7 +7,8 @@
     " How about the pieces now, do you want to learn about how the pieces move? ",
     " Did you know some pieces have special abilities? I can tell you all about them? ",
     " Would you like some hints regarding the pieces? ",
-    " would you like to know some random opening and its names "
+    " would you like to know some random opening and its names? ",
+    " Chess etiquette is a set of unwritten rules that govern the behavior of chess players, would you like to know some?"
 
   ],
   "enquire": ["what would you like to learn next? ", "What can I show you? ", "ask me anything, anything at all, ",
@@ -66,6 +67,15 @@
     "I'm completely lost", "Come again", "I dont think I got that", "I don't get it", "huh"],
   "more":
   [" shall I continue? ", " do you require more information? ", " shall I keep going? ", " there is more, do you want it ",
-    " want more? ", " shall I proceed? "]
-
+    " want more? ", " shall I proceed? ", " there is more yes?", "continue?", "press on?", "keep going?"],
+  "etiquette":
+  [" Shaking hands with your opponent before and after each game",
+    " Keeping silent and focused during the game, avoiding talking or making noise that can distract you or your opponent.",
+    " Following the touch-move rule, which means that if you touch a piece, you have to move it, unless you announce 'ADJUST' before adjusting a piece on its square.",
+    " Making clear and precise moves, placing the pieces firmly on the center of the squares and capturing pieces by removing them from the board.",
+    " Pressing the clock with the same hand that you use to move the pieces, and not abusing the clock by hitting it too hard or too often.",
+    " Announcing “check” and “checkmate” only if it is required by the tournament rules, otherwise it is unnecessary and can be seen as rude or distracting.",
+    " Offering and accepting a draw in a polite and respectful manner, only when it is your turn to move, and not repeating the offer too often or in a hopeless position.",
+    " Resigning when you are clearly losing and have no chance of saving the game, by shaking hands with your opponent or stopping the clock and congratulating them.",
+    " Showing good sportsmanship by not gloating over your victory or complaining about your loss, and by analyzing the game with your opponent in a constructive and friendly way."]
 }

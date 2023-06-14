@@ -6,6 +6,7 @@ let key_terms = fs.readFileSync("./key_terms.json")
 let rule_book = JSON.parse(key_terms);
 let Question_data = fs.readFileSync('./Questions.json');
 let questions = JSON.parse(Question_data);
+let first_go = true;
 
 // GLOBALS ---------------------------------------------------------------------------------------------------
 let board_record = [];
@@ -107,6 +108,8 @@ function bot_instruction(instr){
                 response.bot_answer("A5");
         }if (["review", "game"].every(val => instr.includes(val))) {
             return board_record[1];
+        }if (["agim"].every(val => instr.includes(val))) {
+            return response.bot_answer("A99");
         }
     }
     return "";
@@ -120,14 +123,30 @@ function bot_response(words){
         bot_question = (bot_question + 1) % questions["yes_or_no"].length;
         bot_raise = true;
         return questions["yes_or_no"][bot_question - 1]; //see what happens when this rolls over at length and this value becomes -1
-    } if (bot_raise && (["yes", "ja", "yup", "da", "yebo"].some(val => words.includes(val)))  ){
-        bot_raise = false;
-        return response.bot_answer("A"+bot_question)
-    } else if (bot_raise && (["no", "nope", "nein", "nada", "na", "ayewa"].some(val => words.includes(val)))){
-        bot_raise = false;
-        return questions["enquire"][any_element(questions["enquire"].length)]
-    } else if (!bot_raise && (["yes", "ja", "yup", "da", "yebo", "ok", "okay", "sure", "cool", "so"].some(val => words.includes(val)))){
-        return response.next_ans();
+    } if (bot_raise){
+        if (["yes", "ja", "yup", "da", "yebo"].some(val => words.includes(val))){
+            bot_raise = false;
+            return response.bot_answer("A"+bot_question)
+        } else if (["no", "nope", "nein", "nada", "na", "ayewa"].some(val => words.includes(val))){
+            bot_raise = false;
+            return questions["enquire"][any_element(questions["enquire"].length)]
+        }
+        } else {
+            if (["yes", "ja", "yup", "da", "yebo", "ok", "okay", "sure", "cool", "so"].some(val => words.includes(val))) {
+                if (!first_go) {
+                    return response.next_ans();
+                } else {
+                    first_go = false;
+                    let t = 'Chess is a strategy board game for two players, called White and Black,' +
+                            ' each controlling an army of chess pieces (16) in their color, with the objective to checkmate the' +
+                            ' opponent\'s king. '
+                    return bot_response("_");
+                }
+            } else {
+                if(["no", "nope", "nein", "nada", "na", "ayewa"].some(val => words.includes(val))){
+                    return bot_response("")
+            }
+        }
     }
     return "";
 } //Automated responses to automated predefined questions

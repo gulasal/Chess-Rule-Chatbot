@@ -40,14 +40,8 @@ async function answer(keywords){
         return ans_buffer[more]
     }
 
-}//First checks if keywords match Pieces.json and if not the searches Rule.txt
+}//called directly from Handler. First checks if keywords match Pieces.json and if not the searches Rule.txt
 function bot_answer(question){
-    //     " Let us start from the beginning, do you want me to show you how to set up the board? ",
-    //     " How about the pieces now, do you want to learn about How those move? ",
-    //     " Did you know some pieces have special abilities? I can tell you all about them? ",
-    //     " Would you like some hints regarding the pieces? ",
-    //     " would you like to know some common openings and their names"
-    //     " "
     let ans = []
     ans[0] = "";
     let ans_start = "";//questions["positive_answer"][any_element(questions["positive_answer"].length)]
@@ -82,6 +76,10 @@ function bot_answer(question){
     } else if (question === "A5"){
         for (let i =0; i < 30; i++){
             ans.push(openings["opening"][any_element(openings["opening"].length)]);
+        }
+    } else if (question === "A6"){
+        for (let i in questions["etiquette"]){
+            ans.push(i);
         }
     } else if (question === "A99"){
             ans.push(questions["agim"][any_element(questions["agim"].length)]);
