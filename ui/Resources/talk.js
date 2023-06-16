@@ -7,20 +7,24 @@ const kws = require('./KeyWords.js');
 const fs = require("fs");
 let timeoutId;
 let first_go = true;
+const path = require('path')
 
 
-const io = new Server(server); //,{
-// cors: { //this stays because It is useful
-//     origin: "http://localhost:63342",
-//         methods: ["GET", "POST"]
-// }
-// });
+const io = new Server(server,{
+    cors: { //this stays because It is useful
+        origin: "http://localhost:3000",
+        methods: ["GET", "POST"]
+    }
+});
 //change the socket port here for front end
-server.listen(3000, () => {
-    console.log('listening on *:3000');
+server.listen(5001, () => {
+    console.log('listening on *:5001');
 });
 
-app.use(express.static('ui/public'));
+app.use(express.static('ui/Resources/'));
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'ui/Resources/build','index.html'));
+});
 
 io.on('connect', (socket) => {
     console.log('socket connected');
