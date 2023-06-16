@@ -140,11 +140,11 @@ function bot_response(words){
                     let t = 'Chess is a strategy board game for two players, called White and Black,' +
                             ' each controlling an army of chess pieces (16) in their color, with the objective to checkmate the' +
                             ' opponent\'s king. '
-                    return bot_response("_");
+                    return t + bot_response("_");
                 }
             } else {
                 if(["no", "nope", "nein", "nada", "na", "ayewa"].some(val => words.includes(val))){
-                    return bot_response("")
+                    return bot_response("_");
             }
         }
     }
@@ -160,4 +160,3 @@ module.exports = {find_keywords, converstaion_handler: conversation_handler}
 
 
 // -------------------------------------------------------------testing---------------------------------------
-

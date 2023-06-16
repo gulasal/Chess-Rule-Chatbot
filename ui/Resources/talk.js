@@ -21,7 +21,7 @@ server.listen(5001, () => {
     console.log('listening on *:5001');
 });
 
-app.use(express.static('ui/Resources/'));
+app.use(express.static('ui/Resources/build'));
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'ui/Resources/build','index.html'));
 });
