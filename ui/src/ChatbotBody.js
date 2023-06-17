@@ -42,7 +42,7 @@ function ChatbotBody({ messages }) {
                   alignItems: "center",
                   justifyContent: "center",
                   maxWidth: "50%",
-                  fontSize: "1.5rem",
+                  fontSize: "0.8rem",
                   color: "white",
                 }}
               >

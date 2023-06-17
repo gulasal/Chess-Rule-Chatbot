@@ -8,11 +8,13 @@ let openings = JSON.parse(opening_data);
 let Question_data = fs.readFileSync('./Questions.json');
 let questions = JSON.parse(Question_data);
 let more = 0;
+let limit = 0;
 let ans_buffer = []
 
 async function answer(keywords){
     ans_buffer = [];
     more = 0;
+    console.log(keywords["size"])
     if (keywords["piece"].length === 1) {
         let t = keywords["piece"][0].charAt(0).toUpperCase() + keywords["piece"][0].slice(1); //Change piece name to upper case for navigate json
         if (keywords["piece operator"].includes("move")) {
@@ -25,48 +27,43 @@ async function answer(keywords){
             return "The " + t + pieces["White"][t]["steps"];
         } else if(["position", "placed", "place", "start", "put"].some(val => keywords["piece operator"].includes(val))){
             return "The " + t + "'s starting position is " + pieces["White"][t]["Current_Position"] +" for white";
-        } else if(["worth", "value"].some(val => keywords["piece operator"].includes(val))) {
+        } else if(["worth", "value", "points"].some(val => keywords["piece operator"].includes(val))) {
             return "The " + t + pieces["White"][t]["points"];
         } else if(["capture", "take"].some(val => keywords["piece operator"].includes(val))) {
             return "The " + t + pieces["White"][t]["capturing"];
+        } else if (keywords["size"] === 2){
+            return "Yes, the " + t + " is one of the pieces but, " + questions["not_understanding"][any_element(questions["not_understanding"].length)];
         }
     } if (keywords["rule_book"].length >= 1){
         ans_buffer = await searchFile([keywords["piece"], keywords["piece operator"],keywords["rule_book"]].flat());
+        limit = ans_buffer.length;
         return ans_buffer[more]
     }
 
-}//First checks if keywords match Pieces.json and if not the searches Rule.txt
+}//called directly from Handler. First checks if keywords match Pieces.json and if not the searches Rule.txt
 function bot_answer(question){
-    //     " Let us start from the beginning, do you want me to show you how to set up the board? ",
-    //     " How about the pieces now, do you want to learn about How those move? ",
-    //     " Did you know some pieces have special abilities? I can tell you all about them? ",
-    //     " Would you like some hints regarding the pieces? ",
-    //     " would you like to know some common openings and their names"
-    //     " "
     let ans = []
     ans[0] = "";
-    let ans_start = questions["positive_answer"][any_element(questions["positive_answer"].length)]
+    let ans_start = "";//questions["positive_answer"][any_element(questions["positive_answer"].length)]
     if (question === "A1"){
-
-        ans_start = ans_start + ". I'll do the white pieces and lets see if you can do the black pieces." +
-            "+ \n The " + i + " starts at position: "
+        ans_start = ans_start + ". I'll do the white pieces and lets see if you can do the black pieces."
         for (let i in pieces.White) {
             for (let j in pieces.White[i].Current_Position) {
-                ans.push(" " +pieces.White[i].Current_Position[j]);
+                ans.push(i + " " +pieces.White[i].Current_Position[j]);
             }
         }
     } else if (question === "A2"){
         for (let i in pieces.White) {
-            //ans = ans + i + "starts at position: ";
-            for (let j in pieces.White[i]) {
-                ans.push(pieces.White[i].steps +" " + pieces.White[i].direction);
+            ans.push("The " + i + " " + pieces.White[i].steps + " ");
+                for (let j in pieces.White[i].direction) {
+                ans.push("The " + i + " " + pieces.White[i].direction[j]);
             }
         }
     } else if (question === "A3"){
         ans_start = ans_start + " Ah, you want the special moves, you are going to have to pick the one you like the most. \n";
         for (let i in pieces.White) {
             if (pieces.White[i].Special_Move !== "") {
-                ans.push(" " + "The " + i + " is: it " +  pieces.White[i].Special_Move + "  \n");
+                ans.push(" " + "The " + i + " is: " +  pieces.White[i].Special_Move + "  \n");
             }
         }
     } else if (question === "A4"){
@@ -80,21 +77,28 @@ function bot_answer(question){
         for (let i =0; i < 30; i++){
             ans.push(openings["opening"][any_element(openings["opening"].length)]);
         }
+    } else if (question === "A6"){
+        for (let i in questions["etiquette"]){
+            ans.push(i);
+        }
+    } else if (question === "A99"){
+            ans.push(questions["agim"][any_element(questions["agim"].length)]);
     }
     ans[0] = ans_start;
     ans_buffer = [];
     ans_buffer = ans;
-    more = 0;
-    return ans
+    limit = ans.length;
+    more = 1;
+    return ans[0] +" " + ans[1] + " shall I continue? ";
 } //bot answers to predetermined questions, needs to be expanded
 function next_ans(){
     more++;
-    if (more === ans_buffer.length - 1){
-        return "This is the last one I'm afraid: " + ans_buffer[more];
+    if (more === limit - 1){
+        return "Lastly: " + ans_buffer[more];
     }else if( more < ans_buffer.length - 1){
-        return ans_buffer[more];
+        return ans_buffer[more] + "," + questions["more"][any_element(questions["more"].length)];
     }
-    else return "";
+    else return questions["change_subject"][any_element(questions["change_subject"].length)];
 } //Iterates through the answers already found.
 async function searchFile(keywords, file="Rule.txt") {
     const fileStream = fs.createReadStream(file);
