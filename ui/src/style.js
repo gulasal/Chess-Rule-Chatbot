@@ -1,7 +1,7 @@
-export const FooterStyle = {
+export const FooterInputStyle = {
   height: "4rem",
   borderRadius: "0 0 0 15px",
-  width: "27rem",
+  width: "80%",
   border: "none",
   paddingLeft: "0.5rem",
   "@media (max-width: 768px)": {
@@ -24,10 +24,10 @@ export const chatbotFooterStyle = {
 };
 
 export const buttonStyles = {
-  width: "3rem",
+  width: "20%",
   height: "4rem",
   borderRadius: " 0 0 15px 0 ",
-  "@media(maxWidth: 768px)": { width: "20%" },
+  "@media(maxWidth: 768px)": { width: "30%" },
 };
 
 export const chatbotBodyStyles = {
@@ -38,6 +38,8 @@ export const chatbotBodyStyles = {
   flexDirection: "column",
   padding: "1% 1.5rem",
   overflowY: "auto",
+  scrollbarWidth: "thin",
+  scrollbarColor: "transparent transparent",
 
   ".right": {
     flexDirection: "column",
@@ -55,7 +57,10 @@ export const chatbotBodyStyles = {
       borderRadius: "10px 10px 10px 0",
     },
   },
-
+  "&::-webkit-scrollbar": {
+    width: "0",
+    background: "transparent",
+  },
   "@media (maxWidth: 768px)": {
     width: "100%",
     height: "calc(100vh - 9rem)",

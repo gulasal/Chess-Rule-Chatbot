@@ -5,7 +5,7 @@ import { Container } from "@nextui-org/react";
 
 const mainWrapperStyle = {
   minWidth: "100%",
-  width: "100% auto",
+  // width: "100% auto",
   height: "100% auto",
   minHeight: "100vh",
   backgroundColor: "#EDF5FF",
@@ -13,9 +13,14 @@ const mainWrapperStyle = {
   margin: "0",
   display: "flex",
   justifyContent: "center",
-  "@media(max-width: 768px)": {
+
+  "@media(min-width: 768px)": {
+    boxSizing: "border-box",
     width: "100%",
     padding: "0",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
   },
 };
 
