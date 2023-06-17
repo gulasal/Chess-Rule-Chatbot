@@ -6,7 +6,7 @@ import React, { useState, useEffect } from "react";
 //change the socket port here for front end
 import { io } from "socket.io-client";
 const socket = io("//localhost:5001");
-socket.on('connect', function () {
+socket.on("connect", function () {
   console.log("socket connected");
 });
 
@@ -43,21 +43,15 @@ function ChatbotWrapper() {
     let lastMessage = messages[messages.length - 1];
     // if last message is a non-empty question, ask the server
     if (lastMessage.text !== "" && lastMessage.position === "right") {
-      console.log(lastMessage)
+      console.log(lastMessage);
       socket.emit("clientMessage", lastMessage.text);
     }
     // handle server responses
     socket.on("serverMessage", (data) => {
       console.log(data);
-      const tempData = data.split("#");
-      if (tempData.length === 1) {
-        setMessages([...messages, { text: tempData[0], position: "left" }]);
-      } else {
-        const tempList = tempData[1].split(",");
-        setMessages([
-          ...messages,
-          { text: tempData[0], list: tempList, position: "left" },
-        ]);
+
+      if (data.length > 0) {
+        setMessages([...messages, { text: data, position: "left" }]);
       }
     });
   }, [messages]);

@@ -10,10 +10,14 @@ const titleStyle = {
   fontFamily: "'Space Grotesk', sans-serif",
   padding: "2rem",
   display: "flex",
+  marginTop: "0.5rem",
   flexDirection: "column",
 
   "@media(max-width: 768px)": {
     display: "none",
+  },
+  "@media(min-width: 768px)": {
+    width: "80%",
   },
 };
 
