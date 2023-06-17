@@ -10,7 +10,7 @@ let first_go = true;
 const path = require('path')
 
 
-const io = new Server(server)//,{
+const io = new Server(server, {
     cors: { //this stays because It is useful
         origin: "http://localhost:3000",
         methods: ["GET", "POST"]
