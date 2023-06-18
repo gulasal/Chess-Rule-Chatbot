@@ -10,12 +10,12 @@ let first_go = true;
 const path = require('path')
 
 
-const io = new Server(server)//,{
-//     cors: { //this stays because It is useful
-//         origin: "http://localhost:3000",
-//         methods: ["GET", "POST"]
-//     }
-// });
+const io = new Server(server ,{
+    cors: { //this stays because It is useful
+        origin: "http://localhost:3000",
+        methods: ["GET", "POST"]
+    }
+});
 //change the socket port here for front end
 server.listen(5001, () => {
     console.log('listening on *:5001');
