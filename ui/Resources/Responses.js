@@ -159,6 +159,9 @@ function score(keyword, from_file){
             let pos = s.indexOf(i)
             if(pos >= 0) {
                 if (pos <= half){
+                    if (pos <= half/2){
+                        val++;
+                    }
                     val++;
                 }
                 val++;
