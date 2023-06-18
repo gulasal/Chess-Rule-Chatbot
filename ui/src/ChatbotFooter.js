@@ -21,7 +21,7 @@ const ChatbotFooter = ({ handleInput }) => {
   return (
     <Row css={S.chatbotFooterStyle}>
       <input
-        style={S.FooterStyle}
+        style={S.FooterInputStyle}
         type="text"
         id="message"
         name="message"

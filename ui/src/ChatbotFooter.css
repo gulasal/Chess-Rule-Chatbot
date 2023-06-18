@@ -5,8 +5,3 @@
   border: none;
   padding-left: 0.5rem;
 }
-  @media (max-width: 768px) {
-    .messageInput {
-      width: 80%;
-    }
-  }
