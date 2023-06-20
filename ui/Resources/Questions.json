@@ -37,7 +37,7 @@
     "Why so quite all of a sudden?", "Did I upset you?", "Do you want to continue?", "Do you want to take a break?",
     "Gone fishing?", "*chirp *chirp", "I was once a physics professor", "Earth to \"Grand-Master\" can you hear me?",
     "Where have you gone", "Say something. ANYTHING", "What's up butter-cup", "It's me isn't it, it's all my fault",
-    "Suprpised pikachu face", "I should have been a drummer", "Please take your time", "M U L T I P A S S?"],
+    "Suprpised pikachu face", "Please take your time", "M U L T I P A S S?"],
   "positive_answer":
   [
     "Yes of course, ", "I think I can help with that, ", "Let's see, ", "Oh, I know this one, ",
@@ -56,7 +56,7 @@
     "to start recording a game, just let me know", "I have a couple of recorded games and I can pass each move back to you, just have to prompt me for the next move"],
   "agim":
   ["yo", "wassup", "how can I help", "I'm here", "talk to me", "all ears, or eyes", "HEEEEY", "Aha", "ask me a question",
-    "Yes my young padawan"],
+    "Yes my young padawan", "what's shakin' bacon'", "I should have been a drummer"],
   "repetition":
   ["Didn't I answer that already?", "I don't like repeating myself, lets move on", "I know we spoke about this",
     "You maybe want to check your previous texts?", "Is there something you didn't understand from before?",
